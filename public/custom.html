@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Design</title>
+    <link rel="Stylesheet" href="style.css">
+</head>
+<body>
+    <script src="script.js"></script>
+<!--Nav Bar Start-->
+    <nav class="navbar">
+        <a href="home.html">
+            <img id="Logo" class="logo" src="img/busy order.png" alt="logo" >
+        </a>
+    <ul>
+        <li><a href="index.html" id="homehome">Home</a></li>
+        <li><a href="home.html" id="sersec" >Services</a></li>
+        <li><a href="home.html"id="blogsec" >Blog</a></li>
+        <li><a href="home.html"id="contsec" >Contact Us</a></li>
+        <li><a href="home.html"id="aboutsec" >About</a></li>
+    </ul>
+    <div class="profile-section">
+        <div class="profile-display" id="profileDisplay">
+            <img id="profilePic" src="img/defaultpicture.png" alt="Profile Picture" class="profile-pic">
+            <span class="userdisplay" id="usernameDisplay">Username</span>
+        </div>
+</div>
+</nav> 
+<!--Nav Bar End-->
+<!--Custom page Start-->
+<section>
+    <div class="custom-page">
+        <h2 class="cu-h2">CUSTOMIZE YOUR DESIGN</h2>
+        <img src="img/custom design.png" class="cus-img">
+        <h3 class="cu-h3">Customizing your design is all about transforming your vision into a reality. 
+            Share every detail about your desired design—colors, style, layout, and special 
+            elements—so that it truly reflects your unique preferences and goals. 
+            Upload any sketches, inspirations, or references that capture the look and feel you're aiming for. 
+            Whether it’s a modern website layout, a mobile app interface, or a distinctive brand graphic,
+             I’ll bring your ideas to life. Together, we’ll create a personalized design that aligns perfectly 
+             with your expectations and stands out to your audience. Got it! Canva is a fantastic tool for creating 
+             visually appealing and customizable designs. If you need any tips on maximizing Canva’s 
+             features or help with design ideas, feel free to ask!</h3>
+    </div>
+</section>
+<!--Custom page End-->
+<!--custom design page Start-->
+<section class="cusec">
+<div class="cucontainer">
+<div class="cu-boxes">
+    <div class="cu-box" id="logo">
+        <img src="img/Logo.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="menu">
+        <img src="img/MENU.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="id">
+        <img src="img/ID.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="resume">
+        <img src="img/Resume.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="thumbnail">
+        <img src="img/YT Thumbnail.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="photo">
+        <img src="img/photo collage.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="video">
+        <img src="img/video collage.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="banner">
+        <img src="img/banner.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="invitation">
+        <img src="img/invitation.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="poster">
+        <img src="img/poster.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="pintrest">
+        <img src="img/pintrest.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="t-shirt">
+        <img src="img/t-shirt.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="card">
+        <img src="img/card.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="certificate">
+        <img src="img/certificate.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="flyer">
+        <img src="img/flyer.png" class="cuimg" >
+    </div>
+</div>
+<div class="cu-boxes">
+    <div class="cu-box" id="brochure">
+        <img src="img/brochure.png" class="cuimg" >
+    </div>
+</div>
+</div>
+</section>
+<!--custom design page End-->
+<!--Footer Page Start-->
+<section>
+    <div class="footer">
+      <img src="img/busy order.png" class="foot-img" alt="Busy Order Logo">
+      <div class="footer-bottom">
+        <p class="foot-para">&copy; 2024 Busy Order. All rights reserved.</p>
+        <p class="fpp">Design & Developed By Krithiga R</p>
+        <div class="policy">
+            <a href="termcondition.html" target="_blank">Terms of Service</a> | 
+            <a href="privacy.html" target="_blank">Privacy Policy</a> | 
+            <a href="refund.html" target="_blank">Refund Policy</a>
+          </div>
+      </div>
+    </div>
+  </section>
+<!--Footer Page End-->
+    <script type="module">
+    // Import the functions you need from the SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+apiKey: "AIzaSyDVIaFaHV5e4fxL6HQeO22_TtaGEtK60CE",
+authDomain: "busy-order-111094.firebaseapp.com",
+databaseURL: "https://busy-order-111094-default-rtdb.firebaseio.com",
+projectId: "busy-order-111094",
+storageBucket: "busy-order-111094.firebasestorage.app",
+messagingSenderId: "402345046681",
+appId: "1:402345046681:web:4def93c2d5c4742b3c7e08",
+measurementId: "G-3R9FT0HKNM"
+};
+
+// Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+
+//username display
+document.addEventListener('DOMContentLoaded', () => {
+            const username = sessionStorage.getItem("username");
+            if (username) {
+                document.getElementById('usernameDisplay').textContent = username;
+            } else {
+                document.getElementById('usernameDisplay').textContent = "";
+            }
+        });
+     
+// Load user profile data
+function loadUserProfile() {
+    const userId = ""; // Replace with logic to get the logged-in user ID
+
+    db.ref('users/' + userId).once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+            const userData = snapshot.val();
+            usernameDisplayElement.textContent = userData.username || 'User';
+        }
+    }).catch((error) => {
+        console.error("Error fetching user data:", error);
+    });
+}
+// Call the function when the page loads
+window.addEventListener('load', loadUserProfile);
+// Profile Picture 
+window.addEventListener('DOMContentLoaded', () => {
+            const userCreds = JSON.parse(sessionStorage.getItem('user-creds'));
+            const profilePic = document.getElementById('profilePic');
+
+            if (userCreds && userCreds.profilePic) {
+                profilePic.src = userCreds.profilePic;
+            } else {
+                console.log("No profile picture found in sessionStorage, showing default image.");
+            }
+        });
+</script>
+</body>
+</html>
