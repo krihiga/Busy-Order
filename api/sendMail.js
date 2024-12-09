@@ -26,15 +26,15 @@ module.exports = async (req, res) => {
                 return res.status(400).json({ error: 'Error uploading file' });
             }
 
-            const { email, subject, name, phone, businessName, style, colors, message } = req.body;
+            const { email, emailr, subject, name, phone, businessName, style, colors, message } = req.body;
 
             const mailOptions = {
                 from: `"${name}" <${process.env.GMAIL_USER}>` , // Sender's email address
-                to:'onlyrithi@gmail.com',                                   // Recipient's email address
+                to: email,                                   // Recipient's email address
                 subject: subject,
                 text: `
                 Name: ${name}
-                Email: ${email}
+                Email: ${emailr}
                 Phone: ${phone}
                 Business Name: ${businessName}
                 Preferred Style: ${style}
