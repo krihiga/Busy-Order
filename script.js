@@ -426,7 +426,7 @@ document.getElementById('logoOrderForm').addEventListener('submit', function (e)
     }
 
     // Send the form data to the backend API
-    fetch('https://busy-order.vercel.app/api/sendMail', { // Replace with your actual API endpoint
+    fetch('https://busy-order.vercel.app/customdesign/api/sendMail', { // Replace with your actual API endpoint
         method: 'POST',
         body: formData,
     })
