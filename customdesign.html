@@ -408,6 +408,7 @@ document.getElementById('logoOrderForm').addEventListener('submit', function(e) 
             alert(`Failed: ${data.error}`);
         } else {
             alert(data.message || 'Email sent successfully!');
+            window.location.href = "placedesignsuccess.html";
         }
     })
     .catch(error => {
