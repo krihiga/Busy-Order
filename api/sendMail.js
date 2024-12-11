@@ -9,9 +9,10 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: process.env.GMAIL_USER,  
-        pass: process.env.GMAIL_PASS,  
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
     },
+    debug: true, // Enable debug mode
 });
 
 module.exports = (req, res) => {
@@ -56,12 +57,13 @@ module.exports = (req, res) => {
 
             try {
                 const info = await transporter.sendMail(mailOptions);
-                console.log('Email sent: ' + info.response);
+                console.log('Email sent successfully:', info);
                 res.status(200).json({ message: 'Email sent successfully!' });
             } catch (error) {
                 console.error('Error sending email:', error);
-                res.status(500).json({ error: 'Error sending email: ' + error.message });
+                res.status(500).json({ error: `Error sending email: ${error.message}` });
             }
+            
         });
     } else {
         res.status(405).json({ error: 'Method Not Allowed' });
