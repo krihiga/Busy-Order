@@ -12,6 +12,8 @@ const transporter = nodemailer.createTransport({
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
     },
+    logger: true, // Log SMTP communication
+    debug: true,  // Show detailed debug information
 });
 
 module.exports = (req, res) => {
