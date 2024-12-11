@@ -295,56 +295,6 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        document.getElementById('logoOrderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    if (!paymentSuccessful) {
-        alert('Please complete the payment before submitting your order.');
-        return;
-    }
-
-    const email = document.getElementById('email').value.trim();
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const businessName = document.getElementById('businessName').value.trim();
-    const style = document.getElementById('style').value.trim();
-    const colors = document.getElementById('colors').value.trim();
-    const message = document.getElementById('description').value.trim();
-    const fileInput = document.getElementById('file');
-    const files = fileInput.files;
-
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('name', name);
-    formData.append('phone', phone);
-    formData.append('businessName', businessName);
-    formData.append('style', style);
-    formData.append('colors', colors);
-    formData.append('description', message);
-
-    for (let i = 0; i < files.length; i++) {
-        formData.append('attachments', files[i]);
-    }
-
-    fetch('https://busy-order.vercel.app/api/sendMail', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => { throw new Error(err.message); });
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert(data.message || 'Email sent successfully!');
-    })
-    .catch(error => {
-        console.error('Error sending email:', error);
-        alert('Failed to send email. Please try again.');
-    });
-});
-
 </script>
 </body>
 <script>
@@ -417,13 +367,55 @@ document.getElementById('payButton').addEventListener('click', function() {
 });
 
 // Form submission with payment check
-document.getElementById('logoOrderForm').addEventListener('submit', function(event) {
+document.getElementById('logoOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
     if (!paymentSuccessful) {
-        event.preventDefault();
         alert('Please complete the payment before submitting your order.');
         return;
     }
 
+    const email = document.getElementById('email').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const businessName = document.getElementById('businessName').value.trim();
+    const style = document.getElementById('style').value.trim();
+    const colors = document.getElementById('colors').value.trim();
+    const message = document.getElementById('description').value.trim();
+    const fileInput = document.getElementById('file');
+    const files = fileInput.files;
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('businessName', businessName);
+    formData.append('style', style);
+    formData.append('colors', colors);
+    formData.append('description', message);
+
+    for (let i = 0; i < files.length; i++) {
+        formData.append('attachments', files[i]);
+    }
+
+    fetch('https://busy-order.vercel.app/api/sendMail', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.message); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message || 'Email sent successfully!');
+    })
+    .catch(error => {
+        console.error('Error sending email:', error);
+        alert('Failed to send email. Please try again.');
+    });
+   
     const requiredFields = document.querySelectorAll('input[required], textarea[required], select[required]');
     let allValid = true;
 
@@ -441,8 +433,5 @@ document.getElementById('logoOrderForm').addEventListener('submit', function(eve
         alert('Please complete all required fields.');
     }
 });
-
-
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </html>
