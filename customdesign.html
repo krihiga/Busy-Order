@@ -392,7 +392,7 @@ document.getElementById('logoOrderForm').addEventListener('submit', function(e) 
     formData.append('businessName', businessName);
     formData.append('style', style);
     formData.append('colors', colors);
-    formData.append('description', message);
+    formData.append('message', message);
 
     for (let i = 0; i < files.length; i++) {
         formData.append('attachments', files[i]);
@@ -402,14 +402,13 @@ document.getElementById('logoOrderForm').addEventListener('submit', function(e) 
         method: 'POST',
         body: formData,
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => { throw new Error(err.message); });
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        alert(data.message || 'Email sent successfully!');
+        if (data.error) {
+            alert(`Failed: ${data.error}`);
+        } else {
+            alert(data.message || 'Email sent successfully!');
+        }
     })
     .catch(error => {
         console.error('Error sending email:', error);

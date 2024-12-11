@@ -12,7 +12,6 @@ const transporter = nodemailer.createTransport({
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
     },
-    debug: true, // Enable debug mode
 });
 
 module.exports = (req, res) => {
@@ -23,17 +22,17 @@ module.exports = (req, res) => {
                 return res.status(400).json({ error: 'Error uploading file' });
             }
 
-            const { email, subject, name, phone, businessName, style, colors, message } = req.body;
+            const { email, name, phone, businessName, style, colors, message } = req.body;
 
-            if (!email || !subject || !name || !message) {
+            if (!email || !name || !message) {
                 return res.status(400).json({ error: 'Missing required fields' });
             }
 
             const mailOptions = {
-                from: process.env.GMAIL_USER, // Must match the authenticated email
-                replyTo: email,              // Use the Firebase user's email for reply-to
-                to: process.env.GMAIL_USER,  // Recipient's email address (your GMAIL_USER)
-                subject: subject,
+                from: process.env.GMAIL_USER,
+                replyTo: email,
+                to: process.env.GMAIL_USER,
+                subject: `New Logo Design Order from ${name}`,
                 text: `
                     Name: ${name}
                     Email: ${email}
@@ -45,12 +44,11 @@ module.exports = (req, res) => {
                 attachments: [],
             };
 
-            if (req.files) {
+            if (req.files && req.files.length > 0) {
                 req.files.forEach(file => {
                     mailOptions.attachments.push({
                         filename: file.originalname,
                         content: file.buffer,
-                        encoding: 'base64',
                     });
                 });
             }
@@ -63,7 +61,6 @@ module.exports = (req, res) => {
                 console.error('Error sending email:', error);
                 res.status(500).json({ error: `Error sending email: ${error.message}` });
             }
-            
         });
     } else {
         res.status(405).json({ error: 'Method Not Allowed' });
