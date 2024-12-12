@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("pintrest");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "pintrest.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("t-shirt");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "tshirt.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("card");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "card.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("certificate");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "certificate.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("flyer");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "flyer.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("brochure");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "brochure.html";
         });
     } else {
         console.log("Customize Design section not found.");
