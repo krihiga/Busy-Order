@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("photo");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "photo.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("video");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "video.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("banner");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "banner.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("invitation");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "invitation.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("poster");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "poster.html";
         });
     } else {
         console.log("Customize Design section not found.");
