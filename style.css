@@ -993,20 +993,7 @@ input, select, textarea, button {
    margin-right: -110px;
 }
 
-button {
-    align-content: center;
-    margin-left: 60px;
-    width: 80%;
-    background: #0056b3;
-    color: white;
-    border: none;
-    cursor: pointer;
-    
-}
 
-button:hover {
-    background: #7d99b6;
-}
 #orderNotification {
         display: none;
         color: green;
