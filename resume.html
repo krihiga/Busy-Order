@@ -7,125 +7,6 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="Stylesheet" href="style.css">
-    <style>
-        /*Custom Order Start*/
-    .cuorderlogo {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        text-align: center;
-        color: rgb(139, 17, 143);
-        padding: 1rem;
-        margin-top: 120px;
-        margin-left: 420px;
-        margin-bottom: 2rem;
-    }
-    
-    .cuorderlogo h1 {
-        width: 100%;
-        font-size: 2rem;
-    }
-    main {
-        display: flex;
-        max-width: 800px;
-        margin: 0 auto;
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Form Section */
-    #order-form h2 {
-        margin-top: 210px;
-        text-align: center;
-        color: #007bff;
-        margin-bottom: 1rem;
-        margin-left: -100px;
-    }
-    
-    #order-form p {
-        text-align: center;
-        color: #555;
-        margin-bottom: 1.5rem;
-        margin-left: -100px;
-    }
-    
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-left: 150px;
-    }
-    
-    fieldset {
-        width: 80%;
-        margin-left: -54px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 1rem;
-    }
-    
-    legend {
-        font-weight: bold;
-        color: #007bff;
-    }
-    
-    label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #555;
-    }
-    
-    input, select, textarea, button {
-        width: 100%;
-        padding: 0.8rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1rem;
-    }
-    .cuorderbutton
-    {
-        width: 60%;
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        margin-left: 23px;
-    }
-    .ppay
-    {
-        display: flex;
-        justify-content: center;
-       margin-right: -110px;
-    }
-    
-    button {
-        align-content: center;
-        margin-left: 60px;
-        width: 80%;
-        background: #0056b3;
-        color: white;
-        border: none;
-        cursor: pointer;
-        
-    }
-    
-    button:hover {
-        background: #7d99b6;
-    }
-    #orderNotification {
-            display: none;
-            color: green;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
-            margin-left: -200px;
-        }
-    /*Custom Order End*/
-    </style>
    
 </head>
 <body>
@@ -324,7 +205,7 @@ document.getElementById('payButton').addEventListener('click', function() {
 
     var options = {
         "key": "rzp_test_mRluxtQjyxITRc", // Replace with your Razorpay Test Key
-        "amount": "10000", // Amount in paise (100 INR = 10000 paise)
+        "amount": "100000", // Amount in paise (100 INR = 100000 paise)
         "currency": "INR",
         "name": "Busy Order",
         "description": "Logo Design Payment",

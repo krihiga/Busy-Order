@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("logo");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "logo.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("menu");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "menu.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("id");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "id.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("resume");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "resume.html";
         });
     } else {
         console.log("Customize Design section not found.");
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customDesignBox = document.getElementById("thumbnail");
     if (customDesignBox) {
         customDesignBox.addEventListener("click", function() {
-            window.location.href = "customdesign.html";
+            window.location.href = "youtube.html";
         });
     } else {
         console.log("Customize Design section not found.");
