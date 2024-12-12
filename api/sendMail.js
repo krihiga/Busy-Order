@@ -34,7 +34,7 @@ module.exports = (req, res) => {
                 from: process.env.GMAIL_USER,
                 replyTo: email,
                 to: process.env.GMAIL_USER,
-                subject: `New Logo Design Order from ${name}`,
+                subject: `New Design Order from ${name}`,
                 text: `
                     Name: ${name}
                     Email: ${email}
