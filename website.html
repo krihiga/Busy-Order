@@ -192,140 +192,140 @@
    </script>
    </body>
    <script>
-   let paymentSuccessful = false; // Flag to track payment status
-   // Razorpay Payment Gateway Integration
-   document.getElementById('payButton').addEventListener('click', function() {
-   // Validate form fields
-   const name = document.getElementById('name').value.trim();
-   const email = document.getElementById('email').value.trim();
-   const phone = document.getElementById('phone').value.trim();
-   const businessName = document.getElementById('businessName').value.trim();
-   const style = document.getElementById('style').value;
-   const colors = document.getElementById('colors').value.trim();
-   const description = document.getElementById('description').value.trim();
-   const fileInput = document.getElementById('file');
-   
-   
-   if (!name || !email || !phone || !businessName || !style || !colors || !description) {
-   alert('Please fill out all fields before proceeding with the payment.');
-   return; // Stop execution if any field is empty
-   }
-   
-   if (!fileInput.files || fileInput.files.length === 0) {
-   alert('Please upload a file.');
-   return;
-   }
-   
-   var options = {
-   "key": "rzp_test_mRluxtQjyxITRc", // Replace with your Razorpay Test Key
-   "amount": "500000", // Amount in paise (5000 INR = 500000 paise)
-   "currency": "INR",
-   "name": "Busy Order",
-   "description": "Logo Design Payment",
-   "image": "https://busy-order.com/img/busy%20order.png", // Optional company logo
-   "handler": function(response) {
-       console.log("Payment Response:", response); // Debug the payment response
-   
-       // Display success message
-       alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-   
-       // Update payment status
-       paymentSuccessful = true;
-       // Set up a notification
-       document.getElementById('orderNotification').style.display = 'block';
-       document.getElementById('orderNotification').textContent = 'Payment Successful. You can now submit your order.';
-   
-       
-   },
-   "prefill": {
-       "name": name, // Prefill user details
-       "email": email,
-       "contact": phone
-   },
-   "theme": {
-       "color": "#3399cc" // Customize the checkout theme
-   }
-   };
-   
-   // Create Razorpay instance
-   var rzp1 = new Razorpay(options);
-   
-   // Handle payment failure
-   rzp1.on('payment.failed', function(response) {
-   console.log("Payment Failed:", response);
-   alert("Payment failed. Error: " + response.error.description);
-   });
-   
-   // Open Razorpay checkout
-   rzp1.open();
-   });
-   
-   // Form submission with payment check
-   document.getElementById('logoOrderForm').addEventListener('submit', function(e) {
-   e.preventDefault();
-   
-   if (!paymentSuccessful) {
-   alert('Please complete the payment before submitting your order.');
-   return;
-   }
-   
-   const email = document.getElementById('email').value.trim();
-   const name = document.getElementById('name').value.trim();
-   const phone = document.getElementById('phone').value.trim();
-   const businessName = document.getElementById('businessName').value.trim();
-   const style = document.getElementById('style').value.trim();
-   const colors = document.getElementById('colors').value.trim();
-   const message = document.getElementById('description').value.trim();
-   const fileInput = document.getElementById('file');
-   const files = fileInput.files;
-   
-   const formData = new FormData();
-   formData.append('email', email);
-   formData.append('name', name);
-   formData.append('phone', phone);
-   formData.append('businessName', businessName);
-   formData.append('style', style);
-   formData.append('colors', colors);
-   formData.append('message', message);
-   
-   for (let i = 0; i < files.length; i++) {
-   formData.append('attachments', files[i]);
-   }
-   
-   fetch('https://www.busy-order.com/api/sendMail', {
-   method: 'POST',
-   body: formData,
-   })
-   .then(response => response.json())
-   .then(data => {
-   if (data.error) {
-       alert(`Failed: ${data.error}`);
-   } else {
-       alert(data.message || 'Email sent successfully!');
-       window.location.href = "placedesignsuccess.html";
-   }
-   })
-   .catch(error => {
-   console.error('Error sending email:', error);
-   alert('Failed to send email. Please try again.');
-   });
-   
-   const requiredFields = document.querySelectorAll('input[required], textarea[required], select[required]');
-   let allValid = true;
-   
-   requiredFields.forEach(field => {
-   if (!field.value.trim()) {
-       field.style.border = '1px solid red';
-       allValid = false;
-   } else {
-       field.style.border = '1px solid #ddd';
-   }
-   });
-   
-   if (!allValid) {
-   event.preventDefault();
-   alert('Please complete all required fields.');
-   }
-   });
-   </script>
+    let paymentSuccessful = false; // Flag to track payment status
+    // Razorpay Payment Gateway Integration
+    document.getElementById('payButton').addEventListener('click', function() {
+    // Validate form fields
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const businessName = document.getElementById('businessName').value.trim();
+    const style = document.getElementById('style').value;
+    const colors = document.getElementById('colors').value.trim();
+    const description = document.getElementById('description').value.trim();
+    const fileInput = document.getElementById('file');
+    
+    
+    if (!name || !email || !phone || !businessName || !style || !colors || !description) {
+    alert('Please fill out all fields before proceeding with the payment.');
+    return; // Stop execution if any field is empty
+    }
+    
+    if (!fileInput.files || fileInput.files.length === 0) {
+    alert('Please upload a file.');
+    return;
+    }
+    
+    var options = {
+    "key": "rzp_test_mRluxtQjyxITRc", // Replace with your Razorpay Test Key
+    "amount": "1000000", // Amount in paise (10000 INR = 1000000 paise)
+    "currency": "INR",
+    "name": "Busy Order",
+    "description": "Logo Design Payment",
+    "image": "https://busy-order.com/img/busy%20order.png", // Optional company logo
+    "handler": function(response) {
+        console.log("Payment Response:", response); // Debug the payment response
+    
+        // Display success message
+        alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+    
+        // Update payment status
+        paymentSuccessful = true;
+        // Set up a notification
+        document.getElementById('orderNotification').style.display = 'block';
+        document.getElementById('orderNotification').textContent = 'Payment Successful. You can now submit your order.';
+    
+        
+    },
+    "prefill": {
+        "name": name, // Prefill user details
+        "email": email,
+        "contact": phone
+    },
+    "theme": {
+        "color": "#3399cc" // Customize the checkout theme
+    }
+    };
+    
+    // Create Razorpay instance
+    var rzp1 = new Razorpay(options);
+    
+    // Handle payment failure
+    rzp1.on('payment.failed', function(response) {
+    console.log("Payment Failed:", response);
+    alert("Payment failed. Error: " + response.error.description);
+    });
+    
+    // Open Razorpay checkout
+    rzp1.open();
+    });
+    
+    // Form submission with payment check
+    document.getElementById('logoOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (!paymentSuccessful) {
+    alert('Please complete the payment before submitting your order.');
+    return;
+    }
+    
+    const email = document.getElementById('email').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const businessName = document.getElementById('businessName').value.trim();
+    const style = document.getElementById('style').value.trim();
+    const colors = document.getElementById('colors').value.trim();
+    const message = document.getElementById('description').value.trim();
+    const fileInput = document.getElementById('file');
+    const files = fileInput.files;
+    
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('businessName', businessName);
+    formData.append('style', style);
+    formData.append('colors', colors);
+    formData.append('message', message);
+    
+    for (let i = 0; i < files.length; i++) {
+    formData.append('attachments', files[i]);
+    }
+    
+    fetch('https://www.busy-order.com/api/sendMail', {
+    method: 'POST',
+    body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+    if (data.error) {
+        alert(`Failed: ${data.error}`);
+    } else {
+        alert(data.message || 'Email sent successfully!');
+        window.location.href = "placedesignsuccess.html";
+    }
+    })
+    .catch(error => {
+    console.error('Error sending email:', error);
+    alert('Failed to send email. Please try again.');
+    });
+    
+    const requiredFields = document.querySelectorAll('input[required], textarea[required], select[required]');
+    let allValid = true;
+    
+    requiredFields.forEach(field => {
+    if (!field.value.trim()) {
+        field.style.border = '1px solid red';
+        allValid = false;
+    } else {
+        field.style.border = '1px solid #ddd';
+    }
+    });
+    
+    if (!allValid) {
+    event.preventDefault();
+    alert('Please complete all required fields.');
+    }
+    });
+    </script>
    </html>
