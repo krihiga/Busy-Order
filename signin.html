@@ -74,44 +74,44 @@ let signinForm = document.getElementById('signin');
 let ProfilePic = document.getElementById('profilePic');
 
 
-let RegisterUser = (evt) => {
+let RegisterUser = async (evt) => {
   evt.preventDefault();
+
   if (Email.value && Password.value && ProfilePic.files[0]) {
-    createUserWithEmailAndPassword(auth, Email.value, Password.value)
-      .then((userCredential) => {
-        // Get user information
-        const user = userCredential.user;
-         // Upload profile picture to Firebase Storage
-         const file = ProfilePic.files[0];
-                const storagePath = `profile-pictures/${user.uid}/${file.name}`;
-                const fileRef = storageRef(storage, storagePath);
-               uploadBytes(fileRef, file);
-        console.log('User created:', user);
+    try {
+      // Create user with email and password
+      const userCredential = await createUserWithEmailAndPassword(auth, Email.value, Password.value);
+      const user = userCredential.user;
 
-        // Save user data to the Realtime Database
-        set(ref(db, 'users/' + user.uid), {
-          username: username.value,
-          email: Email.value,
-          profilePicture: profilePicUR,
-          createdAt: new Date().toISOString()
-        }).then(() => {
-          alert('User successfully created and saved to the database!');
-          window.location.href='login.html';
-        }).catch((error) => {
-          console.error('Error saving to database:', error);
-          alert('Error saving to database: ' + error.message);
-        });
+      // Upload profile picture to Firebase Storage
+      const file = ProfilePic.files[0];
+      const storagePath = `profile-pictures/${user.uid}/${file.name}`;
+      const fileRef = storageRef(storage, storagePath);
+      await uploadBytes(fileRef, file);
 
-      })
-      .catch((error) => {
-        console.error('Error code:', error.code);
-        console.error('Error message:', error.message);
-        alert('Error: ' + error.message);
+      // Get the download URL of the uploaded file
+      const profilePicURL = await getDownloadURL(fileRef);
+
+      // Save user data to the Realtime Database
+      await set(ref(db, 'users/' + user.uid), {
+        username: username.value,
+        email: Email.value,
+        profilePicture: profilePicURL, // Save the correct URL here
+        createdAt: new Date().toISOString()
       });
+
+      alert('User successfully created and saved to the database!');
+      window.location.href = 'login.html';
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error: ' + error.message);
+    }
   } else {
-    alert('Please fill in both fields.');
+    alert('Please fill in all fields and upload a profile picture.');
   }
 };
+
 
 // Attach event listener to the form
 signinForm.addEventListener('submit', RegisterUser);
