@@ -246,34 +246,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         //---------------contact form -----------
-        (function() {
-            emailjs.init("JaGNyQsTMnvsRXkiN"); // Replace with your EmailJS public key
-        })();
+        (function () {
+    emailjs.init("JaGNyQsTMnvsRXkiN"); // Initialize EmailJS with your public key
+})();
 
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const subject = document.getElementById("subject").value;
-            const message = document.getElementById("message").value;
+    // Retrieve input values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-            const templateParams = {
-                name: name,
-                email: email,
-                subject: subject,
-                message: message
-            };
+    // Validate input fields
+    if (!name || !email || !subject || !message) {
+        alert("Please fill in all fields before submitting.");
+        return;
+    }
 
-                emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
-                    .then(function(response) {
-                        console.log("Success response:", response);
-                        alert("Message sent successfully!");
-                        document.getElementById("contactForm").reset();
-                    }, function(error) {
-                        console.error("Error response:", error);
-                        alert("Failed to send message, please try again later.");
-                    });
+    // Template parameters to be sent
+    const templateParams = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+    };
+
+    // Send email via EmailJS
+    emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
+        .then(function (response) {
+            console.log("Success response:", response);
+            alert("Message sent successfully!");
+            document.getElementById("contactForm").reset();
+        })
+        .catch(function (error) {
+            console.error("Error response:", error);
+            alert("Failed to send message, please try again later.");
+        });
+});
+
 
 //----------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
