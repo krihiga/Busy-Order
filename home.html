@@ -265,15 +265,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: message
             };
 
-            emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
-                .then(function(response) {
-                    alert("Message sent successfully!");
-                    document.getElementById("contactForm").reset();
-                }, function(error) {
-                    alert("Failed to send message, please try again later.");
-                    console.error("Error:", error);
-                });
-        });
+            console.log("Sending parameters:", templateParams);
+
+                emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
+                    .then(function(response) {
+                        console.log("Success response:", response);
+                        alert("Message sent successfully!");
+                        document.getElementById("contactForm").reset();
+                    }, function(error) {
+                        console.error("Error response:", error);
+                        alert("Failed to send message, please try again later.");
+                    });
 
 //----------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
