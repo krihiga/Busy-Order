@@ -34,7 +34,6 @@
                           <input type="text" class="username" id="username" name="username" placeholder="UserName" required>
                             <input type="email" class="email" id="email" name="email" placeholder="xyz@gmail.com" required>
                             <input type="password" class="password" id="password" name="password" placeholder="Enter your Password" required>
-                            <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
                             <button type="submit" class="signin-btn">Create New User</button>
                             <a href="login.html"> <button type="button" class="signin-btn">Sign In</button></a>
                         </form>
@@ -44,7 +43,6 @@
     <script type="module">
         // Import the functions you need from the SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
@@ -64,35 +62,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app); // Pass `app` to initialize the database correctly
 const auth = getAuth(app);
-const storage = getStorage(app);
-
 
 // Get form elements
 let Email = document.getElementById('email');
 let Password = document.getElementById('password'); // Ensure there are no trailing spaces in the ID
 let signinForm = document.getElementById('signin');
-let ProfilePic = document.getElementById('profilePic');
-
 
 let RegisterUser = (evt) => {
   evt.preventDefault();
-  if (Email.value && Password.value && ProfilePic.files[0]) {
+  if (Email.value && Password.value) {
     createUserWithEmailAndPassword(auth, Email.value, Password.value)
       .then((userCredential) => {
         // Get user information
         const user = userCredential.user;
-         // Upload profile picture to Firebase Storage
-         const file = ProfilePic.files[0];
-                const storagePath = `profile-pictures/${user.uid}/${file.name}`;
-                const fileRef = storageRef(storage, storagePath);
-               uploadBytes(fileRef, file);
         console.log('User created:', user);
 
         // Save user data to the Realtime Database
         set(ref(db, 'users/' + user.uid), {
           username: username.value,
           email: Email.value,
-          profilePicture: profilePicUR,
           createdAt: new Date().toISOString()
         }).then(() => {
           alert('User successfully created and saved to the database!');
