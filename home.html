@@ -276,15 +276,16 @@ document.getElementById("contactForm").addEventListener("submit", function (even
 
     // Send email via EmailJS
     emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
-        .then(function (response) {
-            console.log("Success response:", response);
-            alert("Message sent successfully!");
-            document.getElementById("contactForm").reset();
-        })
-        .catch(function (error) {
-            console.error("Error response:", error);
-            alert("Failed to send message, please try again later.");
-        });
+    .then(function (response) {
+        console.log("Success response:", response);
+        alert("Message sent successfully!");
+        document.getElementById("contactForm").reset();
+    })
+    .catch(function (error) {
+        console.error("Error response:", error);
+        alert("Failed to send message. Error: " + error.text);
+    });
+
 });
 
 
