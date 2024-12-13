@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     	 <!--Nav Bar Start-->
@@ -115,11 +116,11 @@
         <h2 class="contact-us">CONTACT US</h2>
     </div>
     <div class="Contact-container">
-        <form action="#">
-            <input type="text" class="input" placeholder="your name">
-            <input type="text" class="input" placeholder="your email">
-            <input type="text" class="input" placeholder="your Subject">
-            <textarea class="input" cols="30" rows="5" placeholder="Your message..."></textarea>
+        <form id="contactForm">
+            <input type="text" class="input" id="name" placeholder="your name">
+            <input type="text" class="input" id="email" placeholder="your email">
+            <input type="text" class="input" id="subject" placeholder="your Subject">
+            <textarea class="input" cols="30" id="message" rows="5" placeholder="Your message..."></textarea>
             <input type="submit" class="input submit" value="Send Message">
            </form>
            <div class="contactMethod">
@@ -244,6 +245,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        //---------------contact form -----------
+        (function() {
+            emailjs.init("JaGNyQsTMnvsRXkiN"); // Replace with your EmailJS public key
+        })();
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            const templateParams = {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message
+            };
+
+            emailjs.send("service_ypx1d6e", "template_vi2ecy4", templateParams)
+                .then(function(response) {
+                    alert("Message sent successfully!");
+                    document.getElementById("contactForm").reset();
+                }, function(error) {
+                    alert("Failed to send message, please try again later.");
+                    console.error("Error:", error);
+                });
+        });
 
 //----------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
